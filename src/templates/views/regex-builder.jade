@@ -1,0 +1,6 @@
+.regex-builder-container(ng-controller="RegexBuilderController")
+    .raw-regex-input
+        .quick-tools-view
+            .btn-group.quick-tools()
+                button.btn.btn-sm.btn-info(type="button", ng-click="addQuickTool(tool)", ng-repeat="tool in quickTools") {{tool}}
+        input#input-regex.input-lg.form-control(type="text",placeholder="//",ng-model="rawRegex",ng-change='onRawRegexUpdate()')

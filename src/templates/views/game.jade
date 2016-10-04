@@ -1,0 +1,16 @@
+.container.index.ng-cloak
+    .col-md-6.col-md-offset-3#game-container(ng-show="levelData")
+        .col-xs-12.title
+            i.fa.fa-bolt.icon-button.solve-button(ng-click="solveLevel()")
+            i.fa.fa-forward.icon-button.random-button(ng-click="getRandomLevel()")
+            h1 golf
+            h3.title.percentage {{ golfPoints+' points'}}
+        .row
+            .words-list(ng-class="{'col-xs-6':gameStatus.badWords.length, 'col-xs-12':gameStatus.badWords.length == 0}")
+                ul.list-group.list-good-words
+                    li.list-group-item(ng-repeat="goodWord in gameStatus.goodWords track by $index", ng-bind-html="goodWord.text", ng-class="{'list-group-item-success':goodWord.match}")
+            .col-xs-6.words-list
+                ul.list-group.list-bad-words(ng-show='gameStatus.badWords.length')
+                    li.list-group-item(ng-repeat="badWord in gameStatus.badWords track by $index", ng-bind-html="badWord.text", ng-class="{'list-group-item-danger':badWord.match}")
+
+        .regex-builder(ng-include="'/static/templates/views/regex-builder.html'")
